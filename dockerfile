@@ -14,5 +14,6 @@ RUN mkfifo key && ((cat key ; rm key)&) && (echo y | ssh-keygen -t rsa -C sshuse
 RUN mv key.pub authorized_keys
 RUN ssh-keygen -A
 
+EXPOSE 22
 ENTRYPOINT ["/usr/sbin/sshd", "-D", "-e"]
 
